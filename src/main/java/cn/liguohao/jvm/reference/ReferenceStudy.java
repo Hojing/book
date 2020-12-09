@@ -10,8 +10,7 @@ import java.lang.ref.SoftReference;
 import java.lang.ref.WeakReference;
 import java.net.URI;
 
-/**
- * @Description TODO java四种引用学习
+/**java四种引用学习
  * @Author liguohao
  * @Date 2020/11/3 11:38
  */
