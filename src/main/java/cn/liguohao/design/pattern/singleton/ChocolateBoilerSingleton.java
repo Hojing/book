@@ -1,7 +1,6 @@
 package cn.liguohao.design.pattern.singleton;
 
-/**
- * @Description TODO 单例(件)模式巧克力锅炉
+/**单例(件)模式巧克力锅炉
  * @Author liguohao
  * @Date 2020/9/24 19:32
  */

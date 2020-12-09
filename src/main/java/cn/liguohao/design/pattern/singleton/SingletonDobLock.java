@@ -1,7 +1,6 @@
 package cn.liguohao.design.pattern.singleton;
 
-/**
- * @Description TODO 单例模式 双重锁保障线程安全 双重锁相较直接在方法上加 synchronized 关键字，性能有一定的提升。
+/**单例模式 双重锁保障线程安全 双重锁相较直接在方法上加 synchronized 关键字，性能有一定的提升。
  * @Author liguohao
  * @Date 2020/9/24 19:24
  */

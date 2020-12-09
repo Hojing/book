@@ -1,7 +1,6 @@
 package cn.liguohao.design.pattern.singleton;
 
-/**
- * @Description TODO 经典单例模式
+/**经典单例模式
  * @Author liguohao
  * @Date 2020/9/24 19:24
  */
