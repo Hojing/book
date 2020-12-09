@@ -13,7 +13,7 @@ public class DynamicProxyTest {
      */
     @Test
     public void normal(){
-        UserDao userDao = new cn.liguohao.java.demo.proxy.dynamic.UserDaoImpl();
+        UserDao userDao = new UserDaoImpl();
         userDao.regist();
         userDao.login();
     }
@@ -23,9 +23,9 @@ public class DynamicProxyTest {
      */
     @Test
     public void dynaimcProxy(){
-        cn.liguohao.java.demo.proxy.dynamic.CommonInvocationHandler<UserDao> userDaoCommonInvocationHandler = new cn.liguohao.java.demo.proxy.dynamic.CommonInvocationHandler<UserDao>();
+        CommonInvocationHandler<UserDao> userDaoCommonInvocationHandler = new CommonInvocationHandler<UserDao>();
 
-        UserDao userDao = userDaoCommonInvocationHandler.bind(new cn.liguohao.java.demo.proxy.dynamic.UserDaoImpl());
+        UserDao userDao = userDaoCommonInvocationHandler.bind(new UserDaoImpl());
         userDao.regist();
         userDao.login();
 
