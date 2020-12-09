@@ -21,8 +21,13 @@ public class RSAEncrptUtils {
     private static final String KEY_ALGORITHM = "RSA";
 
     /**
+     * 默认的密钥长度
+     */
+    private static final int DEFAULT_KEY_SIZE = 1024;
+
+    /**
      * 生成密钥对
-     * @param keySize 生成尺寸
+     * @param keySize 生成尺寸 默认1024
      */
     public static KeyPair generateKey(int keySize){
         try {
@@ -38,6 +43,22 @@ public class RSAEncrptUtils {
             e.printStackTrace();
         }
         return null;
+    }
+
+    /**
+     * 生成1024位密钥对
+     * @see #generateKey(int) 
+     */
+    public static KeyPair generateKey(){
+        return generateKey(DEFAULT_KEY_SIZE);
+    }
+
+    /**
+     * 生成密钥文件
+     * @see #generateKeyFile(int, File, File) 
+     */
+    public static void generateKeyFile(File publicKeyFile, File privateKeyFile) throws IOException {
+        generateKeyFile(DEFAULT_KEY_SIZE,publicKeyFile,privateKeyFile);
     }
 
     /**

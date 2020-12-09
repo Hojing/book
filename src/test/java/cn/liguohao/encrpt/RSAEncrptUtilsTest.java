@@ -15,7 +15,7 @@ public class RSAEncrptUtilsTest {
     public void generateKeyFile() throws IOException {
         File publicKeyFile = new File("R:\\test\\key\\publicKeyFile.pub");
         File privateKeyFile = new File("R:\\test\\key\\privatekeyFile.pri");
-        RSAEncrptUtils.generateKeyFile(1024,publicKeyFile,privateKeyFile);
+        RSAEncrptUtils.generateKeyFile(publicKeyFile,privateKeyFile);
     }
 
 }
