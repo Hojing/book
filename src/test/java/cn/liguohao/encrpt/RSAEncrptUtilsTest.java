@@ -28,7 +28,7 @@ public class RSAEncrptUtilsTest {
     /**
      * 加密后的文件
      */
-    private File encrptedFile = new File("R:\\test\\encrypt\\aeskey.key.ikaros");
+    private File encrptedFile = new File("R:\\test\\encrypted\\aeskey.key.ikaros");
 
     /**
      * 解密后的文件
