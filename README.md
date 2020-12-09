@@ -4,8 +4,9 @@ Java学习案例库
 
 # Java案例目录
 
-
 - `cn.liguohao.example.studentmanger`: 简单的学生管理系统
+- `cn.liguohao.encrpt`: AES加密
+- `cn.liguohao.proxy.dynamic` : 动态代理
 
 
 # 设计模式目录
