@@ -2,13 +2,11 @@ package cn.liguohao.jvm.reference;
 
 import cn.liguohao.review.basic.User;
 import org.junit.Test;
-import sun.rmi.runtime.Log;
 
 import java.lang.ref.PhantomReference;
 import java.lang.ref.ReferenceQueue;
 import java.lang.ref.SoftReference;
 import java.lang.ref.WeakReference;
-import java.net.URI;
 
 /**java四种引用学习
  * @Author liguohao
