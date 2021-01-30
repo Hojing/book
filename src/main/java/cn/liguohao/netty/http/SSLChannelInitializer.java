@@ -1,4 +1,4 @@
-package cn.liguohao.netty;
+package cn.liguohao.netty.http;
 
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
