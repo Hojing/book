@@ -13,6 +13,7 @@ import io.netty.handler.ssl.util.InsecureTrustManagerFactory;
 
 /**保持向指定地址发送数据
  * @author <a href="mailto:liguohao_cn@qq.com">liguohao_cn@qq.com</a>
+ * @see  <a href="https://netty.io/4.1/xref/io/netty/example/discard/DiscardClient.html">https://netty.io/4.1/xref/io/netty/example/discard/DiscardClient.html</a>
  * @since 2021/1/30
  */
 public class DiscardClient {
@@ -24,23 +25,24 @@ public class DiscardClient {
 
     public static void main(String[] args) throws Exception {
         // 配置 SSL
-        SslContext sslContext = null;
+        final SslContext sslContext;
         if(SSL){
             sslContext = SslContextBuilder.forClient().trustManager(InsecureTrustManagerFactory.INSTANCE).build();
+        }else {
+            sslContext = null;
         }
 
         NioEventLoopGroup group = new NioEventLoopGroup();
         try {
             Bootstrap b = new Bootstrap();
-            final SslContext finalSslContext = sslContext;
             b.group(group)
                     .channel(NioSocketChannel.class)
                     .handler(new ChannelInitializer<SocketChannel>() {
                         @Override
                         protected void initChannel(SocketChannel ch) throws Exception {
                             ChannelPipeline pipeline = ch.pipeline();
-                            if(finalSslContext != null){
-                                pipeline.addLast(finalSslContext.newHandler(ch.alloc(), HOST, PORT));
+                            if(sslContext != null){
+                                pipeline.addLast(sslContext.newHandler(ch.alloc(), HOST, PORT));
                             }
                             pipeline.addLast(new DiscardClientHandler()); //添加客户端处理器
                         }

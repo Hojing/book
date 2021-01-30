@@ -8,6 +8,7 @@ import io.netty.channel.SimpleChannelInboundHandler;
 
 /**客户端通道处理器
  * @author <a href="mailto:liguohao_cn@qq.com">liguohao_cn@qq.com</a>
+ * @see <a href="https://netty.io/4.1/xref/io/netty/example/discard/DiscardClientHandler.html">https://netty.io/4.1/xref/io/netty/example/discard/DiscardClientHandler.html</a>
  * @since 2021/1/30
  */
 public class DiscardClientHandler extends SimpleChannelInboundHandler<Object> {

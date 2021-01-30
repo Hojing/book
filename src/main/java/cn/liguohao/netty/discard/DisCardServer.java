@@ -28,16 +28,15 @@ public class DisCardServer {
 
     public static void main(String[] args) throws Exception {
         // 配置 SSL
-        SslContext sslContext = null;
+        final SslContext sslContext;
         if(SSL){
             SelfSignedCertificate ssc = new SelfSignedCertificate();
             sslContext = SslContextBuilder.forServer(ssc.certificate(), ssc.privateKey()).build();
-        }
+        }else {sslContext = null;}
 
         NioEventLoopGroup bossGroup = new NioEventLoopGroup(1);
         NioEventLoopGroup workerGroup = new NioEventLoopGroup();
         try {
-            final SslContext finalSslContext = sslContext;
             ServerBootstrap serverBootstrap = new ServerBootstrap();
             serverBootstrap.group(bossGroup, workerGroup)
                 .channel(NioServerSocketChannel.class)          //指定通道类型
@@ -46,8 +45,8 @@ public class DisCardServer {
                     @Override
                     protected void initChannel(SocketChannel ch) throws Exception {
                         ChannelPipeline pipeline = ch.pipeline(); //管道
-                        if(finalSslContext != null){
-                            pipeline.addLast(finalSslContext.newHandler(ch.alloc()));
+                        if(sslContext != null){
+                            pipeline.addLast(sslContext.newHandler(ch.alloc()));
                         }
                         pipeline.addLast(new DiscardServerHandler()); //添加自定义服务端通道处理器
                     }
