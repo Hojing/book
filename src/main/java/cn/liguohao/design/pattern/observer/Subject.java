@@ -1,7 +1,6 @@
 package cn.liguohao.design.pattern.observer;
 
-/**
- * @Description 主题
+/**主题
  * @Author liguohao
  * @Date 2020/9/17 18:01
  */

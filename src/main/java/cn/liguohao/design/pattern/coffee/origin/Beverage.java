@@ -1,7 +1,6 @@
 package cn.liguohao.design.pattern.coffee.origin;
 
-/**
- * @Description TODO beverage abstract entity
+/**beverage abstract entity
  * @Author liguohao
  * @Date 2020/9/20 22:24
  */

@@ -3,8 +3,7 @@ package cn.liguohao.design.pattern.observer;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @Description 天气数据
+/**天气数据
  * @Author liguohao
  * @Date 2020/9/17 18:29
  */

@@ -1,7 +1,6 @@
 package cn.liguohao.design.pattern.observer;
 
-/**
- * @Description 气象站测试
+/**气象站测试
  * @Author liguohao
  * @Date 2020/9/17 18:46
  */
