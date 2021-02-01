@@ -1,4 +1,4 @@
-package cn.liguohao.ioc;
+package cn.liguohao.ioc.v1;
 
 /**IOC容器异常
  * @author <a href="mailto:liguohao_cn@qq.com">liguohao_cn@qq.com</a>

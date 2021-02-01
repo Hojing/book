@@ -1,4 +1,4 @@
-package cn.liguohao.ioc;
+package cn.liguohao.ioc.v1;
 
 /**Bean工厂
  * 负责管理容器中的所有Bean对象

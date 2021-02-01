@@ -1,4 +1,4 @@
-package cn.liguohao.ioc;
+package cn.liguohao.ioc.v1;
 
 /**Bean注册到IOC容器的行为定义
  * @author <a href="mailto:liguohao_cn@qq.com">liguohao_cn@qq.com</a>

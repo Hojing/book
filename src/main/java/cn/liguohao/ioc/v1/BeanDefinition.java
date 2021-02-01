@@ -1,4 +1,4 @@
-package cn.liguohao.ioc;
+package cn.liguohao.ioc.v1;
 
 
 /**Bean定义

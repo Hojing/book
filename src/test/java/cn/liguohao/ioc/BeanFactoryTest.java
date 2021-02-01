@@ -1,5 +1,8 @@
 package cn.liguohao.ioc;
 
+import cn.liguohao.ioc.v1.DefaultBeanFactory;
+import cn.liguohao.ioc.v1.FactoryBean;
+import cn.liguohao.ioc.v1.GenericBeanDefinition;
 import org.junit.Test;
 
 /**

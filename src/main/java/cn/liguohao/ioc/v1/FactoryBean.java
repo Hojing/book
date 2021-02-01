@@ -1,4 +1,4 @@
-package cn.liguohao.ioc;
+package cn.liguohao.ioc.v1;
 
 /**工厂Bean
  * 用于创建对应的Bean
