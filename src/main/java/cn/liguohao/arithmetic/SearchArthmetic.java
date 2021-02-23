@@ -7,25 +7,36 @@ package cn.liguohao.arithmetic;
 public class SearchArthmetic {
 
     /**
-     * 二分查找：用当前元素与数组中中间元素进行比较，一半一半地缩小范围直到找到元素位置
-     * @param intArr 从小到大有序的int数组
+     * 强行查找
+     * @param longArr 从小到大有序的int数组
      * @param key 集合中存在的值
-     * @return 索引位置
+     * @return 元素在数组中的索引位置
      */
-    public static int binarySearch(int[] intArr, int key){
+    public static int forceSearch(long[] longArr, long key){
+        for(int i=0;i<longArr.length;i++) if(key==longArr[i]) return i;
+        return -1;
+    }
+
+    /**
+     * 二分查找：用当前元素与数组中中间元素进行比较，一半一半地缩小范围直到找到元素位置
+     * @param longArr 从小到大有序的int数组
+     * @param key 集合中存在的值
+     * @return 元素在数组中的索引位置
+     */
+    public static int binarySearch(long[] longArr, long key){
 
         // 数组必须是从小到大顺序的
-        if(!checkArrayIsOrderOfLowToHigh(intArr)) throw new IllegalArgumentException("array must be order of low to high ...");
+        if(!checkArrayIsOrderOfLowToHigh(longArr)) throw new IllegalArgumentException("array must be order of low to high ...");
 
         int low = 0;
-        int high = intArr.length - 1;
+        int high = longArr.length - 1;
 
         // 待查询的元素范围[low,high]
         while (low <= high){
             int middle = low + (high - low)/2;
-            if(key < intArr[middle]){
+            if(key < longArr[middle]){
                 high = middle - 1;
-            }else if(key > intArr[middle]){
+            }else if(key > longArr[middle]){
                 low = middle + 1;
             }else {
                 return middle;
@@ -36,11 +47,11 @@ public class SearchArthmetic {
 
     /**
      * 检查数组是否是从小到大顺序的
-     * @param intArr 待检测的数组
+     * @param longArr 待检测的数组
      * @return 是否从小到大顺序
      */
-    public static boolean checkArrayIsOrderOfLowToHigh(int[] intArr){
-        for (int i=0;i<intArr.length;i++) if(i<intArr.length-1 && intArr[i] > intArr[i+1]) return false;
+    public static boolean checkArrayIsOrderOfLowToHigh(long[] longArr){
+        for (int i=0;i<longArr.length;i++) if(i<longArr.length-1 && longArr[i] > longArr[i+1]) return false;
         return true;
     }
 
