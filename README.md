@@ -40,6 +40,9 @@ Java学习案例库
     - `View`:       视图 组合模式
     - `Controler`:  控制 解耦合，提复用
 
+# 算法目录
+- `cn.liguohao.arithmetic`: 算法基础目录
+
 
 # 复习目录
 `cn.liguohao.review`
