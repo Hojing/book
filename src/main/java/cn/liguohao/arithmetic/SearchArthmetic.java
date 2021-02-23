@@ -40,9 +40,7 @@ public class SearchArthmetic {
      * @return 是否从小到大顺序
      */
     public static boolean checkArrayIsOrderOfLowToHigh(int[] intArr){
-        for (int i=0;i<intArr.length;i++){
-            if(i<intArr.length-1 && intArr[i] > intArr[i+1]) return false;
-        }
+        for (int i=0;i<intArr.length;i++) if(i<intArr.length-1 && intArr[i] > intArr[i+1]) return false;
         return true;
     }
 
