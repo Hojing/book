@@ -26,21 +26,42 @@ public class ArrayListTest {
         list.add(
                 User.build().setUsername("王五").setPassword("555")
         );
-        System.out.println(JSON.toJSON(list.get(0)));
-        System.out.println(JSON.toJSON(list.get(1)));
-        System.out.println(JSON.toJSON(list.get(2)));
+        System.out.println(list.get(0));
+        System.out.println(list.get(1));
+        System.out.println(list.get(2));
 
         list.add(1,
                 User.build().setUsername("赵六").setPassword("666"));
 
-        System.out.println(JSON.toJSON(list.get(0)));
-        System.out.println(JSON.toJSON(list.get(1)));
-        System.out.println(JSON.toJSON(list.get(2)));
-        System.out.println(JSON.toJSON(list.get(3)));
+        System.out.println(list.get(0));
+        System.out.println(list.get(1));
+        System.out.println(list.get(2));
+        System.out.println(list.get(3));
 
     }
 
+    @Test
+    public void remove(){
+        ArrayList<User> list = new ArrayList<User>();
+        list.add(
+                User.build().setUsername("张三").setPassword("333")
+        );
+        list.add(
+                User.build().setUsername("李四").setPassword("444")
+        );
+        list.add(
+                User.build().setUsername("王五").setPassword("555")
+        );
+        System.out.println(list.get(0));
+        System.out.println(list.get(1));
+        System.out.println(list.get(2));
 
+        list.remove(0);
+
+        System.out.println(list.get(0));
+        System.out.println(list.get(1));
+        System.out.println(list.get(2));
+    }
 }
 
 /**
@@ -72,5 +93,13 @@ class User{
     public User setPassword(String password) {
         this.password = password;
         return this;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }

@@ -110,7 +110,7 @@ public class ArrayList<E> implements List<E> {
         }
         // 后移其它元素  从最后一个元素遍历到当前索引位置
         for (int i = SIZE - 1; i >= index; i--) {
-            DATA[i+1] = DATA[i];
+            DATA[i + 1] = DATA[i];
         }
         // 插入新元素
         DATA[index] = element;
@@ -135,10 +135,28 @@ public class ArrayList<E> implements List<E> {
     }
 
     /**
+     * 顺序线性表的删除：
+     * <ul>
+     *     <li>索引位置不合理，抛出异常</li>
+     *     <li>取出被删除的元素</li>
+     *     <li>从删除位置开始从前往后遍历，直到最后一个元素位置，将索引位置后方的元素前移一位</li>
+     *     <li>大小减一</li>
+     * </ul>
+     *
      * @see List#remove(int)
      */
     @Override
     public E remove(int index) {
-        return null;
+        // 判断删除的索引位置合理性
+        assert index >= 0 && index <= SIZE : "索引位置不合理 ==> index=" + index;
+        // 前移索引位置后方的元素 从索引位置往后遍历
+        E indexElement = (E) DATA[index];
+        for (int i = index; i < SIZE; i++) {
+            DATA[i] = DATA[i + 1];
+        }
+        //大小减一
+        SIZE--;
+        // 返回被删除的元素
+        return indexElement;
     }
 }
