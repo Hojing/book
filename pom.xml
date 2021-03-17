@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>cn.liguohao</groupId>
-    <artifactId>Java</artifactId>
+    <artifactId>book</artifactId>
     <packaging>pom</packaging>
     <description>小豪的Java学习案例</description>
     <version>1.0-SNAPSHOT</version>
