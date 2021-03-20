@@ -116,7 +116,7 @@ public class SingleLinkedList implements List {
      */
     @Override
     public int size() {
-        int size = 1;
+        int size = 0;
         Node node = head;
         while (node.hasNext()) {
             size++;
@@ -203,8 +203,8 @@ public class SingleLinkedList implements List {
      * @return 索引位置节点的前一节点
      */
     private Node getBeforeIndexNode(int index) {
-        assert index >= 0 && index < size() : "索引越界 ==> " + index + " SIZE=" + size();
-        Node pointer = head;
+        assert index >= 0 && index <= size() : "索引越界 ==> " + index + " SIZE=" + size();
+        Node pointer = head.next;
         for (int i = 0; i < index - 1; i++) {
             pointer = pointer.next;
         }
@@ -218,8 +218,8 @@ public class SingleLinkedList implements List {
      * @return 索引位置
      */
     public Node getIndexNode(int index) {
-        assert index >= 0 && index < size() : "索引越界 ==> " + index + " SIZE=" + size();
-        Node pointer = head;
+        assert index >= 0 && index <= size() : "索引越界 ==> " + index + " SIZE=" + size();
+        Node pointer = head.next;
         for (int i = 0; i < index; i++) {
             pointer = pointer.next;
         }
