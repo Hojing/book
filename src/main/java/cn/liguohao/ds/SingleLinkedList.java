@@ -82,7 +82,8 @@ public class SingleLinkedList implements List {
     }
 
     /**
-     * 断链清空法
+     * 暴力断链清空法
+     * 这里有个挺严重的问题：断链虽然和头节点没关系了，但是其它节点还是连着的，这在Java里属于强引用，GC是不会回收的，会一直占用堆空间
      *
      * @see List#clear()
      */
