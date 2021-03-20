@@ -82,14 +82,32 @@ public class SingleLinkedList implements List {
     }
 
     /**
-     * 暴力断链清空法
-     * 这里有个挺严重的问题：断链虽然和头节点没关系了，但是其它节点还是连着的，这在Java里属于强引用，GC是不会回收的，会一直占用堆空间
+     * 指针遍历清除法：
+     * 用指针从头遍历到尾
+     * 一个一个节点置空
+     * <hr>
+     * 相比 暴力断链清除法
+     * 时间复杂度从 O(1) => O(n)
+     * 空间复杂度从 O(n) => O(1)
+     * <hr>
+     * 暴力断链清除法的弊端：
+     * <pre>head.next = null;</pre>
+     * 断链虽然和头节点没关系了，但是其它节点还是连着的，这在Java里属于强引用，GC是不会回收的，会一直占用堆空间
+     * 这点非常影响程序的健壮性，牺牲点时间相对来说非常划算
      *
      * @see List#clear()
      */
     @Override
     public void clear() {
-        head.next = null;
+        Node node = head;
+
+        // 需要注意语句的执行先后顺序
+        while (node.hasNext()){
+            Node currentNode = node;
+            node = node.next;
+            currentNode.data = null;
+            currentNode.next = null;
+        }
     }
 
     /**
