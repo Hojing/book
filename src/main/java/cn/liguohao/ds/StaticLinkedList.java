@@ -7,7 +7,7 @@ package cn.liguohao.ds;
  * @author <a href="mailto:liguohao_cn@qq.com">liguohao_cn@qq.com</a>
  * @since 2021/3/28
  */
-public class StaticLinkedList<T> {
+public class StaticLinkedList<T> implements List<T>{
 
     /**
      * 数据域
@@ -24,4 +24,38 @@ public class StaticLinkedList<T> {
     }
 
 
+    @Override
+    public boolean isEmpty() {
+        return false;
+    }
+
+    @Override
+    public void clear() {
+
+    }
+
+    @Override
+    public int size() {
+        return 0;
+    }
+
+    @Override
+    public void set(int index, T element) {
+
+    }
+
+    @Override
+    public void add(T element) {
+
+    }
+
+    @Override
+    public T get(int index) {
+        return null;
+    }
+
+    @Override
+    public T remove(int index) {
+        return null;
+    }
 }
