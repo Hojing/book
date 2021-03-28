@@ -1,9 +1,9 @@
 package cn.liguohao.ds;
 
 /**
+ * 单链线性表
  * 线性表
  * 链式存储结构
- * 单链表
  *
  * @author <a href="mailto:liguohao_cn@qq.com">liguohao_cn@qq.com</a>
  * @since 2021/3/20

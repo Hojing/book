@@ -30,7 +30,7 @@ public class ArrayListTest {
         System.out.println(list.get(1));
         System.out.println(list.get(2));
 
-        list.add(1,
+        list.set(1,
                 User.build().setUsername("赵六").setPassword("666"));
 
         System.out.println(list.get(0));

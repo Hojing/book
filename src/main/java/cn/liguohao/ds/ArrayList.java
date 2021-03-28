@@ -95,10 +95,10 @@ public class ArrayList<E> implements List<E> {
      *     <li>大小加一</li>
      * </ul>
      *
-     * @see List#add(int, Object)
+     * @see List#set(int, Object)
      */
     @Override
-    public void add(int index, E element) {
+    public void set(int index, E element) {
 
         // 判断插入的位置合理性
         assert index >= 0 && index <= SIZE : "索引位置不合理 ==> index=" + index;
@@ -123,7 +123,7 @@ public class ArrayList<E> implements List<E> {
      */
     @Override
     public void add(E element) {
-        add(SIZE, element);
+        set(SIZE, element);
     }
 
     /**
