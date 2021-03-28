@@ -136,10 +136,10 @@ public class SingleLinkedList implements List {
      *     <li>先将新建的节点[newNode]的指针指向下一个节点，再将上一个节点的指针执行新建的节点[newNode]</li>
      * </ul>
      *
-     * @see List#add(int, Object)
+     * @see List#set(int, Object)
      */
     @Override
-    public void add(int index, Object element) {
+    public void set(int index, Object element) {
         Node indexNode = getIndexNode(index);
 
         Node newNode = new Node();
