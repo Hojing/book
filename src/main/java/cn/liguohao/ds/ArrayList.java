@@ -22,7 +22,7 @@ public class ArrayList<E> implements List<E> {
     /**
      * 当前容量
      */
-    private int CURRENT_CAPCITY = -1;
+    private int CURRENT_CAPACITY = -1;
 
     /**
      * 扩容倍数
@@ -57,7 +57,7 @@ public class ArrayList<E> implements List<E> {
      * @param capacity 顺序线性表数组容量
      */
     private void init(int capacity) {
-        CURRENT_CAPCITY = capacity;
+        CURRENT_CAPACITY = capacity;
         DATA = new Object[capacity];
     }
 
@@ -103,8 +103,8 @@ public class ArrayList<E> implements List<E> {
         // 判断插入的位置合理性
         assert index >= 0 && index <= SIZE : "索引位置不合理 ==> index=" + index;
         // 判断容量是否足够，不够则扩容
-        if (SIZE + 1 >= CURRENT_CAPCITY) {
-            Object[] NEW_DATA = new Object[CURRENT_CAPCITY * CAPACITY_EX_MULTIPLE];
+        if (SIZE + 1 >= CURRENT_CAPACITY) {
+            Object[] NEW_DATA = new Object[CURRENT_CAPACITY * CAPACITY_EX_MULTIPLE];
             System.arraycopy(DATA, 0, NEW_DATA, 0, SIZE);
             DATA = NEW_DATA;
         }
