@@ -30,7 +30,7 @@ public interface List<T> {
      * @param index 索引位置
      * @param element 待添加的元素
      */
-    void add(int index, T element);
+    void set(int index, T element);
 
     /**
      * 添加元素

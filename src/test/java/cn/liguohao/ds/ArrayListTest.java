@@ -30,7 +30,7 @@ public class ArrayListTest {
         System.out.println(list.get(1));
         System.out.println(list.get(2));
 
-        list.add(1,
+        list.set(1,
                 User.build().setUsername("赵六").setPassword("666"));
 
         System.out.println(list.get(0));
@@ -61,45 +61,5 @@ public class ArrayListTest {
         System.out.println(list.get(0));
         System.out.println(list.get(1));
         System.out.println(list.get(2));
-    }
-}
-
-/**
- * 测试用
- * 用户
- * 实体类
- */
-class User{
-    private String username;
-    private String password;
-
-    public static User build(){
-        return new User();
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public User setUsername(String username) {
-        this.username = username;
-        return this;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public User setPassword(String password) {
-        this.password = password;
-        return this;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                '}';
     }
 }
