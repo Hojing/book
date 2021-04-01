@@ -11,9 +11,14 @@ package cn.liguohao.ds;
 public class StaticLinkedList<T> implements List<T> {
 
     /**
-     * 节点数组
+     * 数据域
      */
-    private ArrayList<Node<T>> nodeArrayList = new ArrayList<Node<T>>();
+    private ArrayList<T> dataArray;
+
+    /**
+     * 指针域
+     */
+    private ArrayList<Integer> curArray;
 
     /**
      * 链表元素个数
@@ -22,9 +27,14 @@ public class StaticLinkedList<T> implements List<T> {
     private int size = 0;
 
     /**
+     * 节点在数据域和指针域的数组索引指针
+     */
+    private int pointer = 0;
+
+    /**
      * 链表头节点
      */
-    private Node<T> head = new Node<T>().setCur(1);
+    private Node<T> head;
 
     /**
      * 节点
@@ -34,11 +44,16 @@ public class StaticLinkedList<T> implements List<T> {
         /**
          * 数据
          */
-        E data;
+        private E data;
         /**
-         * 指针
+         * 下个节点的指针
          */
-        int cur;
+        private Node<E> next;
+
+        /**
+         * 节点在数据域和指针域的数组索引位置
+         */
+        private int index;
 
         public E getData() {
             return data;
@@ -49,21 +64,40 @@ public class StaticLinkedList<T> implements List<T> {
             return this;
         }
 
-        public int getCur() {
-            return cur;
+        public Node<E> getNext() {
+            return next;
         }
 
-        public Node<E> setCur(int cur) {
-            this.cur = cur;
+        public Node<E> setNext(Node<E> next) {
+            this.next = next;
+            return this;
+        }
+
+        public int getIndex() {
+            return index;
+        }
+
+        public Node<E> setIndex(int index) {
+            this.index = index;
             return this;
         }
     }
 
-    /**
-     * 初始化添加头节点
-     */
     public StaticLinkedList() {
-        nodeArrayList.add(head);
+        staticLinkedListInit();
+    }
+
+    /**
+     * 静态链表初始化
+     */
+    private void staticLinkedListInit() {
+        dataArray = new ArrayList<T>();
+        curArray = new ArrayList<Integer>();
+        head = new Node<T>();
+
+        head.setIndex(pointer);
+        dataArray.set(pointer, head.getData());
+        curArray.set(pointer,pointer);
     }
 
     /**
@@ -92,10 +126,7 @@ public class StaticLinkedList<T> implements List<T> {
         assert index >= 0  : "索引不合法 ==> index="+index;
 
         Node beforeNode = getBeforeIndexNode(index);
-        Node afterNode = nodeArrayList.get(beforeNode.cur);
 
-        Node<T> newNode = new Node<T>().setData(element).setCur(beforeNode.cur);
-        beforeNode.setCur(index);
 
 
     }
