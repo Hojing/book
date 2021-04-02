@@ -39,7 +39,7 @@ public class SingleLinkedListTest {
     @Test
     public void addIndex(){
         System.out.println(list.get(3));
-        list.add(3,new User().setUsername("黑七").setPassword("777"));
+        list.set(3,new User().setUsername("黑七").setPassword("777"));
         System.out.println(list.get(4));
     }
 
