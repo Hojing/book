@@ -202,7 +202,7 @@ public class StaticLinkedList<T> implements List<T> {
 
     /**
      * 获取索引位置的上一个节点
-     * 指针从头节点往下移动 index-1 次 即是索引节点的前节点
+     * 指针从头节点往下移动 index 次 即是索引节点的前节点
      *
      * @param index 链表索引位置
      * @return 索引位置的上一个节点
