@@ -159,4 +159,20 @@ public class ArrayList<E> implements List<E> {
         // 返回被删除的元素
         return indexElement;
     }
+
+
+    /**
+     * 获取列表内元素所在索引位置
+     *
+     * @param element 元素
+     * @return 索引位置
+     */
+    int getIndex(E element) {
+        for (int i = 0; i < SIZE; i++) {
+            if (DATA[i] == element) {
+                return i;
+            }
+        }
+        return -1;
+    }
 }
