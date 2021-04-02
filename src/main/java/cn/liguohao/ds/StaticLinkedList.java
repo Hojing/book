@@ -27,6 +27,11 @@ public class StaticLinkedList<T> implements List<T> {
     private Node<T> head;
 
     /**
+     * 空节点
+     */
+    private Node<T> emptyNode = new Node<T>().setCur(-1).setData(null);
+
+    /**
      * 节点
      *
      * @param <E> 节点存放数据的类型
@@ -174,19 +179,21 @@ public class StaticLinkedList<T> implements List<T> {
     @Override
     public T remove(int index) {
         Node<T> beforeIndexNode = getBeforeIndexNode(index);
-        Node<T> currentNode = memoryArray.get(beforeIndexNode.cur);
+        // 从内存数组中移除当前索引节点
+        Node<T> removedNode = memoryArray.get(beforeIndexNode.cur);
+        T data = removedNode.data;
 
         // 移除节点关系
-        beforeIndexNode.setCur(currentNode.cur);
+        beforeIndexNode.setCur(removedNode.cur);
 
-        // 从内存数组中移除当前索引节点
-        Node<T> removeNode = memoryArray.remove(currentNode.cur);
+        // 将节点重置为空节点
+        removedNode = emptyNode;
 
         // 元素个数减一
         --size;
 
         // 返回被移除元素数据
-        return removeNode.data;
+        return data;
     }
 
     /**
