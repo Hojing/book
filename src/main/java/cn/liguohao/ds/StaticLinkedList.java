@@ -36,15 +36,11 @@ public class StaticLinkedList<T> implements List<T> {
          * 数据
          */
         private E data;
-        /**
-         * 下个节点的指针
-         */
-        private Node<E> next;
 
         /**
-         * 节点在 模拟内存 的数组 中的位置索引
+         * 下个节点在 模拟内存 的数组 中的位置索引
          */
-        private int cur;
+        private int cur = -1;
 
         public E getData() {
             return data;
@@ -55,17 +51,9 @@ public class StaticLinkedList<T> implements List<T> {
             return this;
         }
 
-        public Node<E> getNext() {
-            return next;
-        }
-
-        public Node<E> setNext(Node<E> next) {
-            this.next = next;
-            return this;
-        }
 
         public boolean hasNext() {
-            return next != null;
+            return cur >= 0;
         }
 
         public int getCur() {
@@ -108,10 +96,9 @@ public class StaticLinkedList<T> implements List<T> {
             Node<T> currentNode = head;
             while (currentNode.hasNext()) {
                 Node<T> willClearNode = currentNode;
-                currentNode = currentNode.next;
+                currentNode = memoryArray.get(currentNode.cur);
                 willClearNode.setCur(-1);
                 willClearNode.setData(null);
-                willClearNode.setNext(null);
 
                 --size;
             }
@@ -135,18 +122,19 @@ public class StaticLinkedList<T> implements List<T> {
 
         // 获取新节点的前节点和后节点
         Node<T> beforeNode = getBeforeIndexNode(index);
-        Node<T> afterNode = beforeNode.next;
+        Node<T> afterNode = memoryArray.get(beforeNode.cur);
 
         // 构建新节点 新节点在内存数组中的索引位置值=内存数组的大小值
-        Node<T> newNode = new Node<T>().setData(element).setCur(memoryArray.size());
+        int cur = memoryArray.size();
+        Node<T> newNode = new Node<T>().setData(element).setCur(cur);
         // 将新节点存放到内存数组中
-        memoryArray.set(memoryArray.size(), newNode);
+        memoryArray.set(cur, newNode);
         // 构建新节点和前节点与后节点之间的关系
-        beforeNode.setNext(newNode);
-        newNode.setNext(afterNode);
+        beforeNode.setCur(cur);
+        newNode.setCur(memoryArray.getIndex(afterNode));
 
         // 链表元素个数加一
-        ++size;
+        ++this.size;
     }
 
     /**
@@ -157,14 +145,15 @@ public class StaticLinkedList<T> implements List<T> {
         Node<T> lastNode = getLastNode();
 
         // 构建新节点 新节点在内存数组中的索引位置值=内存数组的大小值
-        Node<T> newNode = new Node<T>().setData(element).setCur(memoryArray.size());
+        int cur = memoryArray.size();
+        Node<T> newNode = new Node<T>().setData(element).setCur(cur);
         // 将新节点存放到内存数组中
-        memoryArray.set(memoryArray.size(), newNode);
+        memoryArray.set(cur, newNode);
         // 构建新节点与最后一个节点的关系
         if(lastNode == null) {
-            head.setNext(newNode);
+            head.setCur(cur);
         }else {
-            lastNode.setNext(newNode);
+            lastNode.setCur(cur);
         }
 
         // 链表元素个数加一
@@ -185,10 +174,10 @@ public class StaticLinkedList<T> implements List<T> {
     @Override
     public T remove(int index) {
         Node<T> beforeIndexNode = getBeforeIndexNode(index);
-        Node<T> currentNode = beforeIndexNode.next;
+        Node<T> currentNode = memoryArray.get(beforeIndexNode.cur);
 
         // 移除节点关系
-        beforeIndexNode.next = currentNode.next;
+        beforeIndexNode.setCur(currentNode.cur);
 
         // 从内存数组中移除当前索引节点
         Node<T> removeNode = memoryArray.remove(currentNode.cur);
@@ -213,7 +202,7 @@ public class StaticLinkedList<T> implements List<T> {
         // 将指针从头节点往下移动 index 次 即是索引节点的前一节点
         Node<T> beforeIndexNode = head;
         for (int i = 0; i < index ; i++) {
-            beforeIndexNode = beforeIndexNode.next;
+            beforeIndexNode = memoryArray.get(beforeIndexNode.cur);
         }
 
         return beforeIndexNode;
@@ -226,7 +215,7 @@ public class StaticLinkedList<T> implements List<T> {
      * @return 链表索引位置节点
      */
     public Node<T> getIndexNode(int index) {
-        return getBeforeIndexNode(index).next;
+        return memoryArray.get(getBeforeIndexNode(index).cur);
     }
 
     /**
