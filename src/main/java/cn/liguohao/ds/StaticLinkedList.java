@@ -152,12 +152,12 @@ public class StaticLinkedList<T> implements List<T> {
         // 构建新节点 新节点在内存数组中的索引位置值=内存数组的大小值
         int cur = memoryArray.size();
         Node<T> newNode = new Node<T>().setData(element).setCur(cur);
-        // 将新节点存放到内存数组中
-        memoryArray.set(cur, newNode);
+        // 分配内存 即 将新节点存放到内存数组中
+        allocateMemory(cur, newNode);
         // 构建新节点与最后一个节点的关系
-        if(lastNode == null) {
+        if (lastNode == null) {
             head.setCur(cur);
-        }else {
+        } else {
             lastNode.setCur(cur);
         }
 
@@ -181,13 +181,16 @@ public class StaticLinkedList<T> implements List<T> {
         Node<T> beforeIndexNode = getBeforeIndexNode(index);
         // 从内存数组中移除当前索引节点
         Node<T> removedNode = memoryArray.get(beforeIndexNode.cur);
+        int cur = beforeIndexNode.cur;
         T data = removedNode.data;
+
+
 
         // 移除节点关系
         beforeIndexNode.setCur(removedNode.cur);
 
-        // 将节点重置为空节点
-        removedNode = emptyNode;
+        // 释放内存
+        releaseMemory(removedNode);
 
         // 元素个数减一
         --size;
@@ -208,7 +211,7 @@ public class StaticLinkedList<T> implements List<T> {
 
         // 将指针从头节点往下移动 index 次 即是索引节点的前一节点
         Node<T> beforeIndexNode = head;
-        for (int i = 0; i < index ; i++) {
+        for (int i = 0; i < index; i++) {
             beforeIndexNode = memoryArray.get(beforeIndexNode.cur);
         }
 
@@ -235,5 +238,20 @@ public class StaticLinkedList<T> implements List<T> {
         return getIndexNode(size == 0 ? 0 : (size - 1));
     }
 
+    /**
+     * 模拟指定对象的内存释放
+     * @param node 待释放内存的节点对象
+     */
+    private void releaseMemory(Node<T> node) {
+        node = emptyNode;
+    }
 
+    /**
+     * 模拟指定地址内存分配
+     * @param address 内存地址
+     * @param node 使用此块内存的节点对象
+     */
+    private void allocateMemory(int address, Node<T> node) {
+        memoryArray.set(address, node);
+    }
 }
