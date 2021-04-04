@@ -17,6 +17,11 @@ public class SingleLinkedList implements List {
     private Node head = new Node();
 
     /**
+     * 链表的大小
+     */
+    private int size = 0;
+
+    /**
      * 链表的节点
      */
     class Node {
@@ -107,6 +112,8 @@ public class SingleLinkedList implements List {
             node = node.next;
             currentNode.data = null;
             currentNode.next = null;
+
+            --size;
         }
     }
 
@@ -116,12 +123,6 @@ public class SingleLinkedList implements List {
      */
     @Override
     public int size() {
-        int size = 0;
-        Node node = head;
-        while (node.hasNext()) {
-            size++;
-            node = node.next;
-        }
         return size;
     }
 
@@ -150,6 +151,7 @@ public class SingleLinkedList implements List {
         newNode.next = indexNode.next;
         indexNode.next = newNode;
 
+        ++size;
     }
 
     /**
@@ -164,6 +166,8 @@ public class SingleLinkedList implements List {
         Node newNode = new Node();
         newNode.data = element;
         last.next = newNode;
+
+        ++size;
     }
 
     /**
@@ -193,6 +197,7 @@ public class SingleLinkedList implements List {
         Node indexNode = beforeIndexNode.next;
         beforeIndexNode.next = indexNode.next;
 
+        --size;
         return indexNode;
     }
 
@@ -218,7 +223,7 @@ public class SingleLinkedList implements List {
      * @return 索引位置
      */
     public Node getIndexNode(int index) {
-        assert index >= 0 && index <= size() : "索引越界 ==> " + index + " SIZE=" + size();
+        assert index >= 0 && index < size : "索引越界 ==> index=" + index + " index<size SIZE=" + size();
         Node pointer = head.next;
         for (int i = 0; i < index; i++) {
             pointer = pointer.next;

@@ -47,7 +47,7 @@ public class SingleLinkedListTest {
     public void removeIndex(){
         System.out.println(list.get(3));
         list.remove(3);
-        System.out.println(list.get(3));
+        System.out.println(list.get(2));
     }
 
     @Test
