@@ -68,7 +68,7 @@ public class CirculateLinkedList<T> implements List<T> {
      * 链表初始化
      */
     private void init() {
-        Node<T> rear = new Node<>();
+        rear = new Node<>();
         rear.setNext(rear);
     }
 
@@ -92,6 +92,8 @@ public class CirculateLinkedList<T> implements List<T> {
             node = node.next;
             currentNode.data = null;
             currentNode.next = null;
+
+            --size;
         }
     }
 
@@ -102,22 +104,81 @@ public class CirculateLinkedList<T> implements List<T> {
 
     @Override
     public void set(int index, T element) {
+        Node<T> beforeNode = getBeforeIndexNode(index);
+        Node<T> afterNode = beforeNode.next;
 
+        Node<T> newNode = new Node<T>().setData(element);
+
+        beforeNode.next = newNode;
+        newNode.next = afterNode;
+
+        ++size;
     }
 
     @Override
     public void add(T element) {
+        Node<T> last = getLastNode();
+        Node<T> newNode = new Node<T>().setData(element);
+        last.next = newNode;
+        newNode.next = rear;
 
+        ++size;
     }
 
     @Override
     public T get(int index) {
-        return null;
+        return getIndexNode(index).data;
     }
 
     @Override
     public T remove(int index) {
-        return null;
+        Node<T> beforeIndexNode = getBeforeIndexNode(index);
+
+        Node<T> indexNode = beforeIndexNode.next;
+        beforeIndexNode.next = indexNode.next;
+
+        --size;
+        return indexNode.data;
     }
 
+
+
+    /**
+     * 获取索引位置的上一个节点
+     * 指针从头节点往下移动 index 次 即是索引节点的前节点
+     *
+     * @param index 链表索引位置
+     * @return 索引位置的上一个节点
+     */
+    public Node<T> getBeforeIndexNode(int index) {
+        assert (index >= 0 && index <= size) : "索引越界 ==> index=" + index + " size=" + size;
+
+        // 将指针从头节点往下移动 index 次 即是索引节点的前一节点
+        Node<T> beforeIndexNode = rear;
+        for (int i = 0; i < index; i++) {
+            beforeIndexNode = beforeIndexNode.next;
+        }
+
+        return beforeIndexNode;
+    }
+
+    /**
+     * 获取索引位置节点
+     *
+     * @param index 链表索引位置
+     * @return 链表索引位置节点
+     */
+    public Node<T> getIndexNode(int index) {
+        return index == -1 ? rear : getBeforeIndexNode(index).next;
+    }
+
+    /**
+     * 获取链表最后一个节点
+     *
+     * @return 链表最后一个节点
+     */
+    public Node<T> getLastNode() {
+        // 链表最后一个节点的索引值为 size-1
+        return getIndexNode(size == 0 ? -1 : (size - 1));
+    }
 }
